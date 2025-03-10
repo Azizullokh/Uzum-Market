@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addToFavorites, removeFromFavorites } from "../store/FavoritesSlice";
+import { addToFavorites, removeFromFavorites } from "../store/favoritesSlice";
 import { addToCart, removeFromCart } from "../store/CartSlice";
 import { Link, useNavigate } from "react-router-dom";
 import ShoppingBagSVG from "../SVG/ShoppingBagSVG";
