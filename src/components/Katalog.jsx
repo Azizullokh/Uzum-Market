@@ -36,7 +36,7 @@ const Catalog = () => {
   };
 
   return (
-    <div className="flex justify-start mr-[7px] ml-0 mb-2 md:ml-[20px] mx-auto text-black">
+    <div className="flex justify-start mr-[7px] ml-0 mb-2 md:mb-0 md:ml-[20px] mx-auto text-black">
       <button
         onClick={() => setIsOpen(true)}
         className="px-4 py-1 bg-purple-600 flex items-center md:gap-[6px] text-white md:px-6 md:py-3 rounded-lg font-semibold hover:bg-purple-700 transition-all"

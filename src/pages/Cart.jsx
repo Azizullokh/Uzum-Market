@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { removeFromCart } from "../store/CartSlice";
 import WhiteDeleteSVG from "../SVG/WhiteDeleteSVG";
-import { ShoppingBag } from "lucide-react";
 import ShoppingBagCart from "../SVG/ShoppingBagCart";
 import ToatalSvg from "../SVG/ToatalSvg";
 

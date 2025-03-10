@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, removeFromCart } from "../store/CartSlice";
-import ShoppingBagCart from "../SVG/ShoppingBagCart";
+
 
 function Details() {
   const { id } = useParams();

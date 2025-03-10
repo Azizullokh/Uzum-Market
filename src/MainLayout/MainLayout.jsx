@@ -41,14 +41,14 @@ function MainLayout({ children }) {
 
   return (
     <div className="bg-gray-100">
-      <header className="bg-white flex flex-col shadow-md p-4">
+      <header className="bg-white flex items-center flex-col shadow-md p-4">
         <div className="container mx-auto flex justify-between items-center md:w-[80%]">
           <div className="w-40">
             <Link to="/">
               <img src={UzumLogo} alt="Uzum Logo" className="w-full" />
             </Link>
           </div>
-          <div className="relative hidden md:flex flex-grow mx-4">
+          <div className="relative hidden md:flex flex-grow items-center mx-4">
             <Catalog></Catalog>
             <input
               className="w-full p-2 rounded-lg border border-gray-300 focus:outline-none 
