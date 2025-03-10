@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { addToFavorites , removeFromFavorites } from "../store/favoritesSlice";
+import { addToFavorites , removeFromFavorites } from "../store/favoritesSlice.js";
 import { addToCart, removeFromCart } from "../store/CartSlice";
 import HeartSVG2 from "../SVG/HeartSVG2";
 import HeartSVG from "../SVG/HeartSVG";
