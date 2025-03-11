@@ -25,7 +25,7 @@ function Cart() {
       </h2>
 
       {cartItems.length === 0 ? (
-        <p className="text-gray-600 text-lg">Your bag is empty 😞</p>
+        <p className="text-gray-600 text-lg">Your bag is empty</p>
       ) : (
         <div className="flex flex-col md:flex-row gap-6">
           <div className="md:hidden block bg-white p-6 rounded-lg shadow-md border border-gray-200 w-full md:w-[30%] h-fit">
