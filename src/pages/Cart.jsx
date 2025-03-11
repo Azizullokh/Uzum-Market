@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { removeFromCart } from "../store/CartSlice";
+import { removeFromCart , updateQuantity } from "../store/CartSlice";
 import WhiteDeleteSVG from "../SVG/WhiteDeleteSVG";
 import ShoppingBagCart from "../SVG/ShoppingBagCart";
 import ToatalSvg from "../SVG/ToatalSvg";
@@ -12,7 +12,7 @@ function Cart() {
 
   useEffect(() => {
     const total = cartItems.reduce(
-      (sum, product) => sum + Number(product.price) * (product.count || 1),
+      (sum, product) => sum + Number(product.price) * (product.quantity || 1),
       0
     );
     setTotalPrice(total);
@@ -70,18 +70,26 @@ function Cart() {
                       ))}
                     </select>
                   )}
-                  <select className="ml-[0px] md:ml-2 px-[4px] py-[2px] md:p-2 border rounded-lg bg-gray-100 text-gray-700 focus:outline-none">
-                    {[
-                      ...Array(product.stock > 10 ? 10 : product.stock).keys(),
-                    ].map((num) => (
-                      <option key={num + 1} value={num + 1}>
-                        {num + 1}
-                      </option>
-                    ))}
+                  <select
+                    className="ml-[0px] md:ml-2 px-[4px] py-[2px] md:p-2 border rounded-lg bg-gray-100 text-gray-700 focus:outline-none"
+                    value={product.quantity}
+                    onChange={(e) =>
+                      dispatch(
+                        updateQuantity({ id: product.id, quantity: Number(e.target.value) })
+                      )
+                    }
+                  >
+                    {[...Array(Math.min(10, product.stock)).keys()].map(
+                      (num) => (
+                        <option key={num + 1} value={num + 1}>
+                          {num + 1}
+                        </option>
+                      )
+                    )}
                   </select>
                 </div>
                 <p className="text-[10px] md:text-xl font-bold text-violet-600">
-                  ${product.price}
+                  ${(product.price * product.quantity).toFixed(2)}
                 </p>
 
                 <button
@@ -94,7 +102,7 @@ function Cart() {
             ))}
           </div>
           <div className="md:block hidden bg-white p-6 rounded-lg shadow-md border border-gray-200 w-full md:w-[30%] h-fit">
-            <h3 className="text-2xl font-bold text-gray-800 mb-3">💰 Total</h3>
+            <h3 className="text-2xl flex items-center gap-[7px] font-bold text-gray-800 mb-3"><ToatalSvg></ToatalSvg> Total</h3>
             <p className="text-3xl font-semibold text-violet-600">
               ${totalPrice}
             </p>

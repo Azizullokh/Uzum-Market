@@ -4,7 +4,6 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, removeFromCart } from "../store/CartSlice";
 
-
 function Details() {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
@@ -13,6 +12,7 @@ function Details() {
   const [comments, setComments] = useState([]);
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.cart);
+  const [quantity, setQuantity] = useState(1);
 
   const isInCart =
     Array.isArray(cartItems) &&
@@ -33,9 +33,12 @@ function Details() {
       });
 
     axios
-      .get(`https://dummyjson.com/comments/post/${id}`)
-      .then((response) => setComments(response.data.comments || []))
-      .catch((error) => console.log("Error fetching comments:", error));
+      .get(`https://dummyjson.com/products/${id}`)
+      .then((response) => {
+        setProduct(response.data);
+        setComments(response.data.reviews || []);
+      })
+      .catch((error) => console.log("Error fetching product details:", error));
   }, [id]);
 
   if (!product) {
@@ -45,13 +48,14 @@ function Details() {
       </p>
     );
   }
-  const discountedPrice =
-    product.discountPercentage > 0
-      ? (
-          product.price -
-          (product.price * product.discountPercentage) / 100
-        ).toFixed(2)
-      : product.price;
+  const discountedPrice = product.discountPercentage
+    ? (
+        product.price -
+        (product.price * product.discountPercentage) / 100
+      ).toFixed(2)
+    : product.price;
+
+  const totalPrice = (discountedPrice * quantity).toFixed(2);
 
   return (
     <div className="p-5 w-[90%] md:w-[80%] mx-auto">
@@ -109,6 +113,29 @@ function Details() {
             </p>
           )}
 
+          <div className="mt-4">
+            <label className="block text-black font-bold mb-1">
+              amount
+            </label>
+            <select
+              className="border-2 border-black bg-white text-black rounded-md px-3 py-2 w-full md:w-1/3"
+              value={quantity}
+              onChange={(e) => setQuantity(parseInt(e.target.value))}
+            >
+              {Array.from({ length: product.stock }, (_, i) => i + 1).map(
+                (num) => (
+                  <option key={num} value={num}>
+                    {num}
+                  </option>
+                )
+              )}
+            </select>
+          </div>
+          <p className="text-xl font-bold text-black mt-3">
+            Total price:{" "}
+            <span className="text-[#7000FF]">${totalPrice}</span>
+          </p>
+
           <div className="flex flex-col md:flex-row gap-3 mt-5">
             <button
               className={`w-full md:w-1/2 px-5 py-3 rounded-lg text-white font-semibold transition-all ${
@@ -154,14 +181,16 @@ function Details() {
             <div key={index} className="bg-gray-100 p-4 rounded-md shadow">
               <div className="flex items-center gap-[15px]">
                 <p className="font-bold text-black">
-                  {comment.user?.username || "Anonim"}
+                  {comment.reviewerName || "Anonim"}
                 </p>
                 <div className="flex items-center gap-1 text-yellow-400">
                   ⭐ {comment.rating || Math.floor(Math.random() * 5) + 1}
                 </div>
               </div>
-
-              <p className="text-gray-700 mt-1">{comment.body}</p>
+              <p className="text-gray-500 text-sm mt-1">
+                {new Date(comment.date).toLocaleDateString("en-GB")}
+              </p>
+              <p className="text-gray-700 mt-1">{comment.comment}</p>
             </div>
           ))
         ) : (

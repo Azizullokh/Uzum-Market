@@ -107,7 +107,7 @@ function MainLayout({ children }) {
           </button>
         </div>
         {menuOpen && (
-          <div className="md:hidden mt-4 bg-white text-black shadow-md rounded-lg p-4">
+          <div className="md:hidden w-full mt-4 bg-white text-black shadow-md rounded-lg p-4">
             <Catalog></Catalog>
             <div className="relative">
               <input

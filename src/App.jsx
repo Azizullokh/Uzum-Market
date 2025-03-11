@@ -12,34 +12,40 @@ function App() {
     <div>
       <ToastContainer></ToastContainer>
       <Routes>
-      <Route
-        path="/"
-        element={
-          <MainLayout>
-            <Home></Home>
-          </MainLayout>
-        }
-      ></Route>
-      <Route
-        path="/favorites"
-        element={
-          <MainLayout>
-            <Favorite></Favorite>
-          </MainLayout>
-        }
-      ></Route>
-      <Route
-        path="cart"
-        element={
-          <MainLayout>
-            <Cart></Cart>
-          </MainLayout>
-        }
-      ></Route>
-      <Route path="/details/:id" element={<MainLayout><Details></Details></MainLayout>}></Route>
-    </Routes>
+        <Route
+          path="/"
+          element={
+            <MainLayout>
+              <Home></Home>
+            </MainLayout>
+          }
+        ></Route>
+        <Route
+          path="/favorites"
+          element={
+            <MainLayout>
+              <Favorite></Favorite>
+            </MainLayout>
+          }
+        ></Route>
+        <Route
+          path="cart"
+          element={
+            <MainLayout>
+              <Cart></Cart>
+            </MainLayout>
+          }
+        ></Route>
+        <Route
+          path="/details/:id"
+          element={
+            <MainLayout>
+              <Details></Details>
+            </MainLayout>
+          }
+        ></Route>
+      </Routes>
     </div>
-    
   );
 }
 
