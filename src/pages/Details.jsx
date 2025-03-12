@@ -72,7 +72,7 @@ function Details() {
         <img
           src={product.thumbnail}
           alt={product.title}
-          className="w-full md:w-1/2 h-80 object-cover rounded-md shadow-md"
+          className="w-full md:w-1/2 h-80 object-contain rounded-md shadow-md"
         />
 
         <div className="w-full md:w-1/2">
@@ -131,11 +131,10 @@ function Details() {
               )}
             </select>
           </div>
-          <p className="text-xl font-bold text-black mt-3">
+ <p className="text-xl font-bold text-black mt-3">
             Total price:{" "}
             <span className="text-[#7000FF]">${totalPrice}</span>
           </p>
-
           <div className="flex flex-col md:flex-row gap-3 mt-5">
             <button
               className={`w-full md:w-1/2 px-5 py-3 rounded-lg text-white font-semibold transition-all ${
@@ -168,7 +167,7 @@ function Details() {
             key={index}
             src={img}
             alt={`Image ${index + 1}`}
-            className="w-full h-40 object-cover rounded-md shadow-md"
+            className="w-full h-40 object-contain rounded-md shadow-md hover:shadow-2xl ease-in-out duration-300"
           />
         ))}
       </div>

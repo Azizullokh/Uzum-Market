@@ -28,10 +28,10 @@ useEffect(()=> {
 
 return (
     <div className="relative md:w-[90%] lg:w-[85%] w-[95%] sm:w-[100%] mx-auto sm:px-[0px] px-[15px]">
-      <div className="relative overflow-hidden rounded-lg w-full">
+      <div className="relative overflow-hidden rounded-2xl w-full">
         <img
           src={Slides[current]}
-          className="w-full sm:p-[20px] h-[100x] sm:h-[200px] md:h-[300px] lg:h-[400px] xl:h-[500px] object-contain rounded-lg transition-transform duration-700 ease-in-out"
+          className="w-full sm:p-[20px] h-[100x] sm:h-[200px] md:h-[300px] lg:h-[400px] xl:h-[500px] md:rounded-2xl object-contain rounded-2xl transition-transform duration-700 ease-in-out"
           alt={`Slide ${current + 1}`}
         />
       </div>

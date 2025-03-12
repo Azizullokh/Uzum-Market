@@ -52,7 +52,7 @@ function MainLayout({ children }) {
             <Catalog></Catalog>
             <input
               className="w-full p-2 rounded-lg border border-gray-300 focus:outline-none 
-               focus:ring-2 focus:ring-blue-500 transition sm:placeholder-black placeholder-transparent"
+               focus:ring-2 focus:ring-blue-500 transition placeholder-black"
               type="search"
               placeholder="Search..."
               value={searchQuery}
@@ -60,7 +60,7 @@ function MainLayout({ children }) {
             />
             <FaSearch className="absolute right-3 top-4 text-gray-500" />
             {searchQuery && (
-              <div className="absolute left-0 w-full bg-white text-black shadow-lg rounded-lg mt-14 z-10">
+              <div className="absolute left-0 w-full bg-white text-black shadow-lg rounded-lg top-[60px] z-10">
                 {filteredProducts.length > 0 ? (
                   filteredProducts.map((product) => (
                     <Link
